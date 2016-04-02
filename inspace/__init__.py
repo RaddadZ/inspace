@@ -1,5 +1,5 @@
 # TODO
-#   set bg for all linux distr - noew is for gnome
+#   set bg for all linux distr - now is for gnome
 #   check if picture of the day is really jpg - done
 #   set timer to change bg every day - cron job / cronTab 2.0
 #   set prefrences for deleting old bg
@@ -34,10 +34,12 @@ def setBG(src):
 
 url = "http://apod.nasa.gov/apod/astropix.html"
 soup = bs(urlopen(url))
+found = False
 for link in soup.findAll("a"):
     if link["href"].split(".")[-1] == "jpg":
         src = downloadJPG()
         setBG(src)
+        found = True
         break
-    else:
-        print "no image for today :/"
+if not found:
+    print "no image for today"

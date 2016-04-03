@@ -9,7 +9,7 @@ it will fetch the image of the day from Nasa's website and will make it your des
 
 if you want a random pic from the last N years you can sepcify this using:
 
-	>>> inspace -r 
+	>>> inspace -r 1.5
 
 if you want a pic from a specific date you can use this:
 

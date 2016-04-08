@@ -13,10 +13,13 @@ setup(	name='inspace',
 		install_requires= [
 			'BeautifulSoup'
 		],
+		packages=['inspace'],
+		entry_points={'console_scripts': ['inspace = inspace:main']},
 		keywords='space Nasa image day desktop wallpaper',
 		url='http://github.com/RaddadZ/inspace',
 		zip_safe=False
 	 )
+
 
 
 

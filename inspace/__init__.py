@@ -43,13 +43,15 @@ def _reporthook(numblocks, blocksize, filesize, url=None):
     # print "reporthook(%s, %s, %s)" % (numblocks, blocksize, filesize)
     # base = os.path.basename(url)
     # XXX Should handle possible filesize=-1.
+
     try:
-        percent = min((numblocks*blocksize*100)/filesize, 100)
+        percent = min((numblocks*blocksize*100)/filesize,100)
     except:
         percent = 100
     if numblocks != 0:
         sys.stdout.write("\b"*70)
     x = filesize/1024.0
+
     sys.stdout.write("downloading:\t%.2f %-20s %3d%%" % (x, "kB", percent))
 
 
@@ -120,10 +122,12 @@ parser.add_argument('-d', metavar='YYMMDD', help='get the image of the given dat
 parser.add_argument('-c', action='store_true', help='clear ALL pervious downloaded images')
 args = parser.parse_args()
 
-
-if args.d is not None:
-    run(args.c, getimageofdate(args.d))
-elif args.r is not None:
-    run(args.c, getrandombeforeyears(args.r))
-else:
-    run(args.c)
+def main():
+    if args.d is not None:
+        run(args.c, getimageofdate(args.d))
+    elif args.r is not None:
+        run(args.c, getrandombeforeyears(args.r))
+    else:
+        run(args.c)
+if __name__ == "__main__":
+    main()
